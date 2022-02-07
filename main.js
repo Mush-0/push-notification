@@ -1,6 +1,6 @@
 // const process = { env: { SERVER_URL: "NO" } };
 
-const serverUrl = process.env.SERVER_URL;
+const serverUrl = "https://pushing-server.herokuapp.com";
 
 // Show subscription status here (subscribed or not yet)
 function userSubbed(boolean) {
