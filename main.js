@@ -59,9 +59,9 @@ async function reqVapidFromServer(subscription, registration) {
 }
 
 // Sending subscription object to the server to handle it (send push notifications from it)
-function sendSubToServer(subscription) {
+async function sendSubToServer(subscription) {
   // console.log(`Sending :${JSON.stringify(subscription)} to the server...`);
-  fetch(`${serverUrl}/register`, {
+  const res = await fetch(`${serverUrl}/register`, {
     method: "post",
     headers: {
       "Content-type": "application/json",
@@ -70,6 +70,7 @@ function sendSubToServer(subscription) {
       subscription: subscription,
     }),
   });
+  res.status === 204 ? userSubbed(true) : userSubbed(false);
 }
 
 const btn = document.querySelector("input");
