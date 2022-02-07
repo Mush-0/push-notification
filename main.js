@@ -46,7 +46,7 @@ async function reqVapidFromServer(subscription, registration) {
   // Fetching the Vapid puplicKey
   const response = await fetch(`${serverUrl}/vapid_puplic_key`);
   const vapidPublicKey = await response.text();
-  console.log("vapidPublicKey: ", vapidPublicKey);
+  // console.log("vapidPublicKey: ", vapidPublicKey);
   // Chrome needs the vapid puplicKey to be Unit8Array
   // I read that the bug was fixed to i give same key without any conversion to test it on chrome
   // const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
@@ -60,7 +60,7 @@ async function reqVapidFromServer(subscription, registration) {
 
 // Sending subscription object to the server to handle it (send push notifications from it)
 function sendSubToServer(subscription) {
-  console.log(`Sending :${JSON.stringify(subscription)} to the server...`);
+  // console.log(`Sending :${JSON.stringify(subscription)} to the server...`);
   fetch(`${serverUrl}/register`, {
     method: "post",
     headers: {
