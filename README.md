@@ -6,6 +6,6 @@ It's bootstraped from private repo i cant expose now...
 
 # How to use
 
-Access (Pushing app)["https://mush-0.github.io/push-notification"] and accept push notification.
+Access [Pushing app]("https://mush-0.github.io/push-notification") and accept push notification.
 
 Click the subscribe button if the pop-up didn't appear
