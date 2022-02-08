@@ -2,7 +2,7 @@
 
 const serverUrl = "https://pushing-server.herokuapp.com";
 
-// Show subscription status here (subscribed or not yet)
+// Show subscription status in #result div (subscribed or not yet)
 function userSubbed(boolean) {
   const result = document.querySelector("#result");
   if (boolean === true) {
@@ -19,6 +19,7 @@ window.onload = () => {
     console.log("This browser doesn't support Service Workers");
   } else {
     navigator.serviceWorker.register("./service-worker.js");
+    userSubbed(false);
     // We use the registration object to subscribe in pushManager
     startSubProcess();
   }
@@ -40,7 +41,6 @@ async function reqVapidFromServer(subscription, registration) {
     userSubbed(true);
     return subscription;
   } else {
-    userSubbed(false);
     console.log("User didn't subscribe yet, starting subscribing process");
   }
   // Fetching the Vapid puplicKey
