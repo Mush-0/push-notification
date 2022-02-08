@@ -9,3 +9,6 @@
   padding: 1rem;
   background-color: gray;
 }
+.hidden {
+  display: none;
+}

@@ -3,17 +3,33 @@ console.log("service worker is RDY...");
 // Trying to cache assets
 // Code copied from: https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage
 const assetsToCache = [
-  "/imgs/kitty.png",
-  "/imgs/paw.png",
   "/index.html",
   "/main.js",
   "/style.css",
+  "/imgs",
+  "/imgs/kitty.png",
+  "/imgs/paw.png",
+  "/favicons",
+  "/favicon.ico",
 ];
 const cacheVersion = "v1";
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(cacheVersion).then(function (cache) {
       return cache.addAll(assetsToCache);
+    })
+  );
+});
+self.addEventListener("activate", function (event) {
+  event.waitUntil(
+    caches.keys().then(function (keyList) {
+      return Promise.all(
+        keyList.map(function (key) {
+          if (key !== cacheVersion) {
+            return caches.delete(key);
+          }
+        })
+      );
     })
   );
 });
@@ -66,7 +82,7 @@ self.addEventListener("push", function (event) {
 });
 
 self.onnotificationclick = function (event) {
-  console.log("On notification click: ", event);
+  // console.log("On notification click: ", event.data);
   // event.notification.close();
 
   // This looks to see if the current is already open and
@@ -77,9 +93,10 @@ self.onnotificationclick = function (event) {
         type: "window",
       })
       .then(function (clientList) {
-        for (var i = 0; i < clientList.length; i++) {
-          var client = clientList[i];
-          if (client.url == "/" && "focus" in client) return client.focus();
+        for (const i = 0; i < clientList.length; i++) {
+          const client = clientList[i];
+          console.log(client);
+          if (client.url == "https://mush-0.github.io/push-notification/" && "focus" in client) return client.focus();
         }
         if (clients.openWindow) return clients.openWindow("/");
       })
