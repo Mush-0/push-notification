@@ -19,7 +19,7 @@ window.onload = () => {
     console.log("This browser doesn't support Service Workers");
   } else {
     navigator.serviceWorker.register("./service-worker.js");
-    userSubbed(false);
+    // userSubbed(false); //This line bugs the user status
     // We use the registration object to subscribe in pushManager
     startSubProcess();
   }
