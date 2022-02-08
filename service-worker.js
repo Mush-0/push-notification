@@ -2,7 +2,7 @@ console.log("service worker is RDY...");
 
 // Trying to cache assets
 // Code copied from: https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage
-const assetsToCache = ["/index.html", "/main.js", "/style.css", "/favicon.ico"];
+const assetsToCache = ["index.html", "main.js", "style.css", "favicon.ico"];
 const cacheVersion = "v1";
 self.addEventListener("install", function (event) {
   event.waitUntil(
