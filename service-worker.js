@@ -3,7 +3,6 @@ console.log("service worker is RDY...");
 // Trying to cache assets
 // Code copied from: https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage
 const assetsToCache = [
-  "/imgs/",
   "/imgs/kitty.png",
   "/imgs/paw.png",
   "/index.html",
@@ -51,6 +50,7 @@ self.addEventListener("push", function (event) {
   // console.log(`Push event received: ${event}`);
   const payload = event.data ? event.data.text() : "no payload";
   const testMsg = payload.substring(0, 4);
+
   // If msg starts with "$test" we wont send any notifications
   if (testMsg !== "$test") {
     event.waitUntil(

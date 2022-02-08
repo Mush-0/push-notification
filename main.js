@@ -70,7 +70,7 @@ async function sendSubToServer(subscription) {
       subscription: subscription,
     }),
   });
-  res.status === 204 ? userSubbed(true) : userSubbed(false);
+  res.status === (201 || 200) ? userSubbed(true) : userSubbed(false);
 }
 
 const btn = document.querySelector("input");
