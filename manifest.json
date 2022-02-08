@@ -3,6 +3,7 @@
   "short_name": "Mush0",
   "description": "Mr Mush0 Messaging application",
   "display": "fullscreen",
+  "start_url": "./push-notification/",
   "icons": [
     {
       "src": "/favicons/android-chrome-192x192.png",

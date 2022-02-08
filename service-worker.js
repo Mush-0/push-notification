@@ -46,7 +46,7 @@ self.addEventListener("fetch", function (event) {
             return response;
           })
           .catch(function () {
-            return caches.match("/imgs/kitty.png");
+            return caches.match("favicon.ico");
           });
       }
     })
