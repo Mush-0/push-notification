@@ -56,7 +56,7 @@ self.addEventListener("fetch", function (event) {
 self.addEventListener("push", function (event) {
   // console.log(`Push event received: ${event}`);
   const payload = event.data ? event.data.text() : "no payload";
-  const testMsg = payload.substring(0, 4);
+  const testMsg = payload.substring(0, 5);
 
   // If msg starts with "$test" we wont send any notifications
   if (testMsg !== "$test") {
