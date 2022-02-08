@@ -2,16 +2,7 @@ console.log("service worker is RDY...");
 
 // Trying to cache assets
 // Code copied from: https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage
-const assetsToCache = [
-  "/index.html",
-  "/main.js",
-  "/style.css",
-  "/imgs",
-  "/imgs/kitty.png",
-  "/imgs/paw.png",
-  "/favicons",
-  "/favicon.ico",
-];
+const assetsToCache = ["/index.html", "/main.js", "/style.css", "/favicon.ico"];
 const cacheVersion = "v1";
 self.addEventListener("install", function (event) {
   event.waitUntil(
@@ -96,7 +87,11 @@ self.onnotificationclick = function (event) {
         for (const i = 0; i < clientList.length; i++) {
           const client = clientList[i];
           console.log(client);
-          if (client.url == "https://mush-0.github.io/push-notification/" && "focus" in client) return client.focus();
+          if (
+            client.url == "https://mush-0.github.io/push-notification/" &&
+            "focus" in client
+          )
+            return client.focus();
         }
         if (clients.openWindow) return clients.openWindow("/");
       })
