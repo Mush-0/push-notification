@@ -20,16 +20,18 @@ window.onload = () => {
 };
 // Check if user already subed and set status to true
 navigator.serviceWorker.ready.then((registeration) => {
-  registeration.pushManager.permissionState().then((permission) => {
-    if (permission === "granted") {
-      setSubStatus(true);
-      // If user already subbed send subData to server to re-check
-      // so if error happened 1st time we can get subData again
-      startSubProcess();
-    } else if (permission === "denied") {
-      setSubStatus(false);
-    }
-  });
+  registeration.pushManager
+    .permissionState({ userVisibleOnly: true })
+    .then((permission) => {
+      if (permission == "granted") {
+        setSubStatus(true);
+        // If user already subbed send subData to server to re-check
+        // so if error happened 1st time we can get subData again
+        startSubProcess();
+      } else if (permission === "denied") {
+        setSubStatus(false);
+      }
+    });
 });
 // Start sub process onClick
 const form = document.querySelector("form#sub");
@@ -48,3 +50,31 @@ form.onsubmit = (e) => {
     }
   });
 };
+//#region App installation (PWA)
+const appDiv = document.querySelector(".app-dw");
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", function (e) {
+  // Prevent installing the app w/o clicking btn
+  e.preventDefault();
+  appDiv.classList.remove("hidden");
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+});
+
+// Installation will be done with button click
+appDiv.addEventListener("click", (e) => {
+  // Show the prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === "accepted") {
+      console.log("User installing the App...");
+      appDiv.classList.add("hidden");
+    } else {
+      console.log("User declined installing...");
+    }
+    deferredPrompt = null;
+  });
+});
+//#endregion

@@ -9,6 +9,18 @@
   padding: 1rem;
   background-color: gray;
 }
+.app-dw {
+  display: block;
+  position: absolute;
+  right: 1rem;
+}
 .hidden {
   display: none;
+}
+
+/* PC Styling */
+@media only screen and (min-width: 800px) {
+  .app-dw {
+    display: none;
+  }
 }
