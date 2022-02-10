@@ -25,14 +25,17 @@ self.addEventListener("activate", function (event) {
   );
 });
 
+// Listen to all "fetch" events and cache new requests
 self.addEventListener("fetch", function (event) {
   event.respondWith(
     caches.match(event.request).then(function (response) {
       // caches.match() always resolves
       // but in case of success response will have value
       if (response !== undefined) {
+        // If we have a cached version > serve it
         return response;
       } else {
+        // If we dont we cache it and serve the request
         return fetch(event.request)
           .then(function (response) {
             // response may be used only once
