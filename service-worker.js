@@ -89,7 +89,7 @@ self.onnotificationclick = function (event) {
       .then(function (clientList) {
         for (const i = 0; i < clientList.length; i++) {
           const client = clientList[i];
-          console.log(client);
+          // console.log(client);
           if (
             client.url == "https://mush-0.github.io/push-notification/" &&
             "focus" in client

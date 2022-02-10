@@ -41,20 +41,46 @@
   </head>
   <body>
     <div class="wrap">
-      <h1><u>Welcome to the messageing App</u></h1>
+      <h1><u>Welcome to the Mush0 Notifications App</u></h1>
       <p>
-        Want to subscribe to messageing service by Mr.Mush0 ? click button below
-        ;)
+        Subscribe to messageing service by Mr.Mush0 ? Fill in the below form and
+        subscribe
       </p>
-      <input type="button" value="Sub to notifications" />
+
+      <form id="sub" action="#">
+        <label
+          >To personalize the notifications enter a valid username
+          <input
+            required
+            type="text"
+            placeholder="UserName"
+            pattern="^[A-z][A-z 0-9]{3,8}[A-z0-9]$"
+            title="Starts with letter, Use letters/numbers/space-in-middle-only, 5~10 length"
+        /></label>
+        <input disabled type="text" id="token" style="cursor: text" />
+        <input id="subscribe" type="submit" value="subscribe" />
+      </form>
       <div id="result">Status: Not subscirbed? :(</div>
+      <div class="guide">
+        <p>
+          Save your username & the Auto-generated token since u will need them
+          to send and receive notifications
+        </p>
+        <p>
+          If you lose either of them block notifications and re-enable it, if
+          that doesn't work contact the developers
+        </p>
+      </div>
     </div>
-    <div class="wrap">
-      Icons used are created by
-      <a href="https://www.flaticon.com/free-icons/cat" title="cat icons"
-        >Freepik - Flaticon</a
-      >
-    </div>
+    <footer>
+      <div class="wrap">
+        Icons used are created by
+        <a href="https://www.flaticon.com/free-icons/cat" title="cat icons"
+          >Freepik - Flaticon</a
+        >
+      </div>
+    </footer>
+
     <!-- <div class="hidden">
       <img src="/imgs/kitty.png" alt="" /> <img src="/imgs/paw.png" alt="" />
     </div> -->
